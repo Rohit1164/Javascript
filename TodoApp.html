@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+</head>
+<style>
+  .container {
+    width: 600px;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid black;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  input {
+    width: 200px;
+    height: 40px;
+    margin-left: 8px;
+    border-radius: 10px;
+  }
+
+  button {
+    width: 120px;
+    height: 44px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    background-color: rgb(21, 141, 21);
+    border-radius: 10px;
+  }
+
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  p {
+    width: 155px;
+    padding-left: 50px;
+    margin-left: 8px;
+  }
+
+  .deletebtn {
+    margin-left: 10px;
+    color: white;
+    background-color: rgb(205, 41, 41);
+  }
+</style>
+
+<body>
+  <div class="container">
+    <h1>Todo App</h1>
+    <input type="text" class="input">
+    <input type="date" class="date">
+    <button onclick="Addbtn()" type="submit" class="addbtn">Add</button>
+    <div class="item">
+    </div>
+  </div>
+  <script>
+    const Product =
+      [
+        { item: "Buy Milk", date: "24/10/2024" },
+        { item: "Buy Butter", date: "24/10/2024" }
+      ]
+    displayItem()
+    function Addbtn() {
+      let inputItem = document.querySelector(".input")
+      let inputDate = document.querySelector(".date")
+      let todoItem = inputItem.value;
+      let tododate = inputDate.value;
+      Product.push({ item: todoItem, date: tododate })
+      inputItem.value = ''
+      inputDate.value = ''
+      displayItem()
+    }
+    function displayItem() {
+      const itemcontainer = document.querySelector(".item")
+      let todoitem = ''
+      for (let i = 0; i < Product.length; i++) {
+        const { item, date } = Product[i];
+        todoitem += `<p>${item}</p>
+        <p>${date}</p>
+        <button onclick="Product.splice(${i}, 1);
+          displayItem()" class="deletebtn">Delete</button>`
+        itemcontainer.innerHTML = todoitem
+      }
+    }
+  </script>
+</body>
+
+</html>
