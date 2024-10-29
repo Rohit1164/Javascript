@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theame Switcher</title>
+</head>
+<style>
+  body {
+    background-color: #121212;
+    color: white;
+  }
+
+  .container {
+    padding-left: 400px;
+    padding-top: 500px;
+  }
+
+  /* button {
+    margin: auto;
+  } */
+
+  .gray {
+    background-color: gray;
+    height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 25px;
+    border-radius: 50%;
+  }
+
+  .red {
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 25px;
+    border-radius: 50%;
+  }
+
+  .blue {
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 25px;
+    border-radius: 50%;
+  }
+
+  .pink {
+    background-color: pink;
+    height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 25px;
+    border-radius: 50%;
+  }
+
+  .purple {
+    background-color: purple;
+    height: 100px;
+    width: 100px;
+    border: none;
+    font-size: 25px;
+    border-radius: 50%;
+  }
+
+  .yellow {
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+    border: none;
+    /* color: white; */
+    font-size: 25px;
+    border-radius: 50%;
+  }
+</style>
+
+<body>
+  <!-- <h1>Theame Switcher</h1> -->
+  <div class="container">
+    <button class="gray">Gray</button>
+    <button class="red">Red</button>
+    <button class="blue">Blue</button>
+    <button class="pink">Pink</button>
+    <button class="purple">Purple</button>
+    <button class="yellow">Yellow</button>
+  </div>
+</body>
+<script>
+  const body = document.querySelector('body')
+  document.querySelector(".gray").addEventListener('click', function () {
+    // alert("Gray")
+    body.style.backgroundColor = 'gray'
+  })
+  document.querySelector(".red").
+    addEventListener('click', function () {
+      // alert("Red")
+      body.style.backgroundColor = 'red'
+    })
+  document.querySelector(".blue").addEventListener('click', function () {
+    // alert("Blue")
+    body.style.backgroundColor = 'blue'
+  })
+  document.querySelector(".pink").addEventListener('click', function () {
+    body.style.backgroundColor = "pink"
+  })
+  document.querySelector(".purple").addEventListener('click', function () {
+    body.style.backgroundColor = 'purple'
+  })
+  document.querySelector(".yellow").addEventListener('click', function () { body.style.backgroundColor = 'yellow' })
+</script>
+
+</html>
