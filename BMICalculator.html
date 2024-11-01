@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+</head>
+<style>
+  body {
+    color: white;
+    font-family: sans-serif;
+    background-color: #121212;
+  }
+
+  .container {
+    width: 410px;
+    height: 100%;
+    display: grid;
+    margin: auto;
+    align-items: center;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid white;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  hr {
+    width: 70%;
+    border: 2px solid white;
+    border-radius: 5px;
+  }
+
+  .height {
+    width: 290px;
+    height: 25px;
+    padding: 5px;
+    margin: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .weight {
+    width: 290px;
+    height: 25px;
+    padding: 5px;
+    margin: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+  }
+
+  button {
+    width: 400px;
+    height: 40px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    /* margin-left: px; */
+    background-color: rgb(35, 205, 35);
+  }
+</style>
+
+<body>
+  <form>
+    <div class="container">
+      <h1>BMI Calculator</h1>
+      <hr>
+      <div>
+        <label>Height (cm)</label>
+        <input type="text" placeholder="Enter Your height" class="height">
+      </div>
+      <div>
+        <label>Weight (kg)</label>
+        <input type="text" placeholder="Enter Your weight" class="weight">
+      </div>
+      <button class="button"> Result</button>
+      <div>
+        <p class="height"></p>
+        <h2 class="result"></h2>
+      </div>
+    </div>
+  </form>
+</body>
+<script>
+
+
+  const button = document.querySelector(".button").addEventListener('click', function (evant) {
+    evant.preventDefault()
+    const height = parseInt(document.querySelector(".height").value)
+
+    const weight = parseInt(document.querySelector(".weight").value)
+
+    const result = document.querySelector(".result")
+
+    if (height === '' || height < 0 || isNaN(height)) {
+      result.innerHTML = `Give a valide Height(${height})`
+    }
+    else if (weight === '' || weight < 0 || isNaN(weight)) {
+      result.innerHTML = `Give a valide Weight(${weight})`
+    }
+    else {
+      const bmi = (weight / ((height * height) / 10000)).toFixed(2)
+      result.innerHTML = `<h2>${bmi}</h2>`
+    }
+
+  })
+  console.log(button)
+</script>
+
+
+</html>
