@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Time</title>
+</head>
+<style>
+  body {
+    color: white;
+    font-family: sans-serif;
+    background-color: #121212;
+  }
+
+  #text {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  hr {
+    width: 200px;
+    border: 2px solid white;
+  }
+
+  .Container {
+    width: 47.5%;
+    display: grid;
+    margin-left: 30%;
+    border-radius: 20px;
+    box-shadow: 0px 2px 50px 20px;
+    border: 1px solid white;
+  }
+
+  .TimeConatainer {
+    width: 425px;
+    margin: 10px;
+    display: flex;
+    margin-left: 15%;
+    font-size: 30px;
+    padding-left: 35px;
+    padding-right: 5px;
+    border-radius: 10px;
+    background-color: rgb(241, 75, 14);
+  }
+
+  .TimerConatainer {
+    margin: 10px;
+    width: 500px;
+    display: grid;
+    font-size: 30px;
+    margin-left: 11.5%;
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 10px;
+    background-color: rgb(241, 75, 14);
+  }
+
+  .startingminuts {
+    width: 373px;
+    height: 50px;
+    border: none;
+    padding-left: 30px;
+    margin-top: 10px;
+    margin-left: 43px;
+    border-radius: 80px;
+    font-size: x-large;
+  }
+
+  .timer-btn {
+    display: flex;
+    margin-bottom: 0px;
+  }
+
+  button {
+    width: 150px;
+    height: 60px;
+    border: none;
+    color: white;
+    margin-left: 55px;
+    margin-bottom: 10px;
+    font-size: x-large;
+    border-radius: 20px;
+    background-color: #EFA00B;
+  }
+
+  .DateConatainer {
+    margin: 10px;
+    display: flex;
+    width: 650px;
+    font-size: 30px;
+    padding-left: 50px;
+    border-radius: 10px;
+    background: rgb(241, 75, 14);
+  }
+</style>
+
+<body>
+  <h1 id="text">Date & Time</h1>
+  <hr>
+  <div class="Container">
+    <div class="TimeConatainer">
+      <h1>Time:</h1>
+      <h1 class="ShowResults1"></h1>
+      <h1 class="ShowResults2"></h1>
+      <h1 class="ShowResults3"></h1>
+    </div>
+    <div class="TimerConatainer">
+      <input type="text" placeholder="Enter time in(Min)" class="startingminuts">
+      <h1 class="showTimer"></h1>
+      <div class="timer-btn">
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+      </div>
+    </div>
+    <div class="DateConatainer">
+      <h1>Date:</h1>
+      <h1 class="showDate"></h1>
+    </div>
+
+  </div>
+</body>
+
+<script>
+
+  //____________________________________Date_____________________________________
+  function date() {
+    const dates = new Date()
+    document.querySelector(".showDate").innerHTML = dates.toDateString()
+  }
+  date()
+
+  //____________________________________Time______________________________________
+  setInterval(() => {
+    const dates = new Date()
+    const hours = document.querySelector(".ShowResults1").innerHTML = `${dates.getHours()}`
+    const minuts = document.querySelector(".ShowResults2").innerHTML = `:${dates.getMinutes()}:`
+    const seconds = document.querySelector(".ShowResults3").innerHTML = dates.getSeconds()
+  }, 1000);
+
+  ///_________________________________Timer_____________________________________
+  let UserInputTime
+  let minutes;
+  let second;
+  document.querySelector(".start").addEventListener('click', function (e) {
+    e.preventDefault()
+    let UserInputTime = parseInt(document.querySelector(".startingminuts").value)
+
+    let time = UserInputTime * 60;
+
+    const showTimer = document.querySelector(".showTimer")
+    let interval
+    if (!interval) {
+      interval = setInterval(timer, 1000);
+      UserInputTime.value = ''
+    }
+    function timer() {
+      minutes = Math.floor(time / 60)
+      second = time % 60
+
+      showTimer.innerHTML = `Timer: ${minutes}m: ${second}s`
+      time--
+    }
+    document.querySelector(".stop").addEventListener('click', function (e) {
+      e.preventDefault()
+      console.log("stopped")
+      clearInterval(interval)
+      interval = null
+    })
+  })
+
+</script>
+
+</html>
