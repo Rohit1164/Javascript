@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSDIE.com</title>
+  <link rel="stylesheet" href="output.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        /* scale: 0.5; */
+        /* transform: translateX(-100px); */
+        clip-path: inset(100% 100% 0 0);
+      }
+
+      to {
+        opacity: 1;
+        /* scale: 1; */
+        /* transform: translateX(0px); */
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    section {
+      animation: appear linear;
+      animation-timeline: view();
+      animation-duration: 3s;
+      animation-range: entry 0% cover 40%;
+    }
+
+    @keyframes appear1 {
+      from {
+        opacity: 0;
+        /* scale: 0.5; */
+        /* transform: translateX(-100px); */
+        transform: translateY(-100px);
+      }
+
+      to {
+        opacity: 1;
+        /* scale: 1; */
+        /* transform: translateX(0px); */
+        transform: translateY(0px);
+      }
+    }
+
+    */ #designs {
+      animation: appear1 linear;
+      animation-timeline: view();
+      animation-duration: 3s;
+      animation-range: entry 0% cover 40%;
+    }
+
+    .home-section {
+      width: 100%;
+      height: 100vh;
+      background-image: url("./home.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .navbar {
+      margin-left: 220px;
+      height: 70px;
+      position: fixed;
+      background-color: rgb(245, 245, 245);
+      width: 962px;
+    }
+
+
+    .nav-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .nav-item-left {
+      display: flex;
+      flex-wrap: wrap;
+      font-weight: 700;
+      justify-content: space-between;
+      text-decoration: none;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-wrap: wrap;
+      font-family: sans-serif;
+      text-decoration: none;
+    }
+
+    .nav-list {
+      font-size: 20px;
+      margin: 20px;
+    }
+
+
+
+    .Home-text {
+      display: grid;
+      gap: 150px;
+      color: white;
+      padding-left: 15%;
+      padding-top: 10%;
+    }
+
+    .Home-text p {
+      margin-bottom: 2%;
+      font-size: larger;
+      font-weight: 300;
+      font-style: normal;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .Home-text h1 {
+      font-weight: 750;
+      font-family: "Poppins", sans-serif;
+      font-size: 100px;
+    }
+
+    .Home-text button {
+      font-family: cursive;
+      padding: 10px 20px 10px 20px;
+      border-radius: 20px;
+      margin-bottom: 5%;
+      border: 1px solid white;
+    }
+
+    .corporate-companyName {
+      height: 128px;
+      width: 400px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .corporate-companyName #left p {
+      display: inline-block;
+      transform: rotate(-90deg);
+      margin-top: 40px;
+    }
+
+    .corporate-companyName .right {
+      display: flex;
+      gap: 5px;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .corporate-companyName .right .arrow {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-left: 100px;
+      padding-top: 6px;
+      padding-left: 9px;
+      border: 1px solid rgb(157, 153, 153);
+    }
+
+    #nav-meanubar {
+      margin-top: 60px;
+      left: 0%;
+      height: 50vh;
+      width: 962px;
+      position: absolute;
+      transition: 0.5s ease;
+      background-color: rgb(245, 245, 245);
+      transform: translateY(-1162px);
+    }
+
+    input {
+      display: none;
+      visibility: hidden;
+    }
+
+    .toggle {
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      top: 20px;
+      left: 300px;
+      z-index: 1;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 0, 0, 10px red(0, 0, 0, 0.3);
+    }
+
+    .toggle .common {
+      position: absolute;
+      height: 2px;
+      width: 20px;
+      background-color: black;
+      border-radius: 50px;
+      transition: 0.3s ease;
+
+    }
+
+    .toggle .top_line {
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .toggle .middle_line {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .toggle .bottom_line {
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    input:checked~.toggle .top_line {
+      left: 2px;
+      top: 14px;
+      width: 25px;
+      transform: rotate(45deg);
+    }
+
+    input:checked~.toggle .middle_line {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    input:checked~.toggle .bottom_line {
+      left: 2px;
+      top: 14px;
+      width: 25px;
+      transform: rotate(-45deg);
+    }
+
+    input:checked~#nav-meanubar {
+      transform: translateX(0);
+      box-shadow: 0, 0, 15px rgb(0, 0, 0, 0.5);
+    }
+  </style>
+
+
+</head>
+
+
+<body>
+  <section class="home-section " id="section1">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="left">
+          <ul class="nav-item-left">
+            <li class="nav-list">NSID.</li>
+            <li>
+              <label class="">
+                <input type="checkbox">
+                <div class="toggle">
+                  <span class="top_line common"></span>
+                  <span class="middle_line common"></span>
+                  <span class="bottom_line common"></span>
+                </div>
+
+                <section id="nav-meanubar" class="flex p-3 bg-slate-200">
+                  <div class="border-r-[2px] border-b-gray-400 pl-5">
+                    <div class="flex font-light">
+                      <p class="text-xl">Our team</p>
+                      <button class="h-8 w-24 ml-5 mr-5 rounded-3xl border border-b-gray-800">About us</button>
+                    </div>
+                    <div class="grid">
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Jessica Point</button>
+                        <span class="pl-32">CEO</span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Ryan Baser</button>
+                        <span class="pl-32">COO</span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Carrie Vath</button>
+                        <span class="pl-32">CMO</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-r-[2px] border-b-gray-400 pl-5">
+                    <div class="flex font-light">
+                      <p class="text-xl">Project Categories</p>
+                      <button class="h-8 w-24 ml-5 mr-5 rounded-3xl border border-b-gray-800">View all</button>
+                    </div>
+                    <div class="grid ">
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Space Planning</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Custom Furniture</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Furniture Layouts</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="border-r-[2px] border-b-gray-400 pl-5">
+                    <div class="flex font-light ">
+                      <p class="text-xl">News Categories</p>
+                      <button class="h-8 w-24 ml-5 mr-5 rounded-3xl border border-b-gray-800">View all</button>
+                    </div>
+                    <div class="grid ">
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Furniture</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Remote Spaces</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+                      <div class=" flex py-5 justify-around  border-b-[1px] border-b-gray-400">
+                        <button class="text-xl ">Office Tech</button>
+                        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <ul class="nav-item">
+            <li class="nav-list">Service</li>
+            <li class="nav-list ">Project</li>
+            <li class="nav-list">Contect</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main>
+      <div class="Home-text">
+        <div class="main-p">
+          <p>INSIDE INNOVATION</p>
+          <h1>Interior Design </h1>
+          <h1>That Metters</h1>
+          <button>SHEADULE A CALL</button>
+        </div>
+      </div>
+      <div class="corporate-companyName">
+        <div id="left" class="bg-slate-300">
+          <p class=" text-white">FEATURED</p>
+        </div>
+        <div class="right">
+          <div class="pl-4">
+            <p id="p1" class="text-xs font-thin border-b-[1px] border-gray-400">INDIAN,TEXAS</p>
+            <p id="p2" class="text-xl font-mono">R S Corporate</p>
+          </div>
+          <div class="arrow">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section id="section2">
+    <div class="w-[100%] flex justify-start   ">
+      <div class="h-96 w-[60%]  border border-slate-300">
+        <div class="w-[92%]  h-56   ml-[73px] pt-14 pl-16  bg-slate-300">
+          <div class="flex ">
+            <p class="font-serif">Corporate client</p>
+            <hr class="border-b-2 border-b-gray-300">
+          </div>
+          <ul class="flex mt-16 ">
+            <li class="mr-10 text-4xl text-slate-500  font-mono ">Godrage</li>
+            <li class="mr-10 text-4xl text-slate-500  font-mono">Harkut</li>
+            <li class="mr-10 text-4xl text-slate-500  font-mono">Lakhani</li>
+          </ul>
+        </div>
+        <div class="ml-[73px] mt-12">
+          <p class="text-xl">Service</p>
+          <h2 class="text-5xl font-bold">We do it best</h2>
+        </div>
+      </div>
+      <div class="h-96 w-[40%] mt-0 border md:border-e-slate-300 ">
+        <button
+          class="md:my-60 md:ml-32 md:h-16 md:w-72 pt-2 pb-3 border rounded-full bg-black text-white hover:text-black hover:bg-white">VEIW
+          All
+          SERVICE</button>
+      </div>
+    </div>
+    <div class="flex  w-[100%] ">
+      <div
+        class="w-[33%] p-10  border cursor-pointer border-e-slate-300 md:hover:translate-x-0.5 md:hover:bg-slate-400 md:hover:opacity-70 md:hover:duration-[1050ms] ">
+        <i class="fa-solid fa-list"></i>
+        <div class="my-40">
+          <h2 class="text-3xl font-bold">Space Planning</h2>
+          <p class="my-10">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae
+            recusandae
+            modi
+            inventore!
+            Culpa dignissimos quaerat nobis aperiam ipsum rerum.</p>
+        </div>
+      </div>
+      <div
+        class="w-[33%]  p-10 border cursor-pointer border-e-slate-300 hover:translate-x-0.5 hover:bg-slate-400 hover:opacity-70 hover:duration-[1050ms]  ">
+
+        <i class="fa-solid fa-person-booth"></i>
+
+        <div class="my-40">
+          <h2 class="text-3xl font-bold">Custom Furniture</h2>
+          <p class="my-10">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae
+            recusandae
+            modi
+            inventore!
+            Culpa dignissimos quaerat nobis aperiam ipsum rerum.</p>
+        </div>
+      </div>
+      <div
+        class="w-[33%] p-10 border cursor-pointer border-e-slate-300 hover:translate-x-0.5 hover:bg-slate-400 hover:opacity-70 hover:duration-[1050ms] ">
+
+        <i class="fa-brands fa-intercom"></i>
+
+        <div class="my-40">
+          <h2 class="text-3xl font-bold">Furniture Layout</h2>
+          <p class="my-10">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae
+            recusandae
+            modi
+            inventore!
+            Culpa dignissimos quaerat nobis aperiam ipsum rerum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section3" class="w-[100%]  bg-no-repeat bg-cover bg-center
+  bg-[url('./Furniture2.jpg')]  h-[120vh]">
+    <div class="py-[10%]">
+      <p class="text-xl pl-20 text-white py-16 ">About NSDI.</p>
+      <h1 class="text-4xl pl-20 font-bold text-white">We're innovating the way</h1>
+      <h1 class="text-4xl pl-20 font-bold text-white"> companies reinvent their </h1>
+      <h1 class="text-4xl pl-20 font-bold text-white">office spacesfor the</h1>
+      <h1 class="text-4xl pl-20 font-bold text-white">remote workforce </h1>
+
+      <p class="text-xl pl-20 text-white py-16 ">JESSICA POINT, CEO</p>
+      <div class="h-16 w-16 border-2 ml-20 pl-[23px] pt-5 rounded-[50%]">
+        <i class="fa-solid fa-play text-white"></i>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="section4" class="max-w-8xl bg-no-repeat bg-cover bg-center
+  bg-[url('./Furniture5.jpg')] m-20 mb-0  h-[70vh] ">
+    <d class="grid items-center justify-center py-16">
+      <p class="text-xl text-white text-center">Explore our work</p>
+      <h2 class="text-3xl  font-bold text-white py-16">See what we can do together.</h2>
+      <button class=" h-10 w-72 border rounded-3xl ml-16  hover:bg-black hover:text-white">VIEW ALL
+        PROJECTS</button>
+      </div>
+  </section>
+
+  <section class="w-[1152px] h-28 ml-40 mb-40  bg-slate-200 flex justify-evenly flex-wrap group">
+    <button
+      class="text-xl w-[350px] bottom-0 font-sans text-gray-600 group-hover:blur-sm: hover:translate-y-2 hover:duration-[0.5s] hover:text-2xl hover:ease-linear hover:font-semibold hover:border-b-2 hover:border-b-gray-600 rounded-md">Space
+      Planning</button>
+    <button
+      class="text-xl w-[350px] font-sans text-gray-600 group-hover:blur-sm: hover:translate-y-2 hover:duration-[0.5s] hover:text-2xl hover:ease-linear hover:font-semibold hover:border-b-2 hover:border-b-gray-600 rounded-md">Custom
+      Furniture</button>
+    <button
+      class="text-xl w-[350px] font-sans text-gray-600 group-hover:blur-sm: hover:translate-y-2 hover:duration-[0.5s] hover:text-2xl hover:ease-linear hover:font-semibold hover:border-b-2 hover:border-b-gray-600 rounded-md">Furniture
+      Layouut</button>
+  </section>
+
+  <section id="designs" class="w-[100%]  grid grid-rows-3  grid-flow-col p-24 gap-4 group">
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img1.jpg')] h-[500px] grid justify-center group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Miami, Florida</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Allstate Employee Lounge</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img2.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">New York, New York</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Spotify Satellite Office</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img3.jpg')]  h-[500px] grid justify-center group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Los Angeles, Californi</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Exxon Mobile Offices</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img4.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Los Angeles, California</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Nike Corporate Space</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img5.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">San Francisco, California</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Delta Satellite Office</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img6.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Austin, Texas</p>
+      <h2 class="text-3xl text-white font-bold pl-7">MetLife Corporate Space</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img7.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Miami, Florida</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Microsoft Office Lounge</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img8.jpg')]  h-[500px] grid justify-center  group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">San Francisco, California</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Disney Employee Loft</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+    <div
+      class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./img9.jpg')]  h-[500px] grid justify-center group-hover:scale-[0.85] hover:!scale-100 hover:duration-[1050ms]">
+      <p class="text-xl text-white mx-28 pt-10 font-semibold">Brooklyn, New York</p>
+      <h2 class="text-3xl text-white font-bold pl-7">Home Depot Headquarters</h2>
+      <button class="h-24 w-24 ml-[40%] border border-white bg-white rounded-[50%]">VIEW</button>
+    </div>
+  </section>
+
+
+  <section class="flex p-5 bg-black bg-opacity-80 gap-4 text-white ">
+    <div class=" bg-no-repeat bg-cover bg-center
+    bg-[url('./Furniture5.jpg')] h-96 w-[100%] grid justify-start">
+      <div class="bg-black bg-opacity-50 grid">
+        <button class="rotate-90 ">Next</button>
+        <button class="rotate-90 ">priveous</button>
+      </div>
+    </div>
+    <div class="font-bold text-3xl w-[60%]">
+      <h1>Name</h1>
+    </div>
+    <div class="text-xl border-l-2 p-5">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nulla laborum fugiat laudantium! Nisi eveniet
+        facere aperiam. Nihil minima praesentium totam non soluta. Laboriosam, tempore quibusdam nesciunt rem eaque
+        itaque?</p>
+    </div>
+  </section>
+
+  <section class="flex h-[120%] w-[100%] p-8 border-b-2 ">
+    <div>
+      <p class="text-xl ">OUR TEAM</p>
+      <h1 class="text-4xl  mt-6">Behind the Design </h1>
+      <div class=" bg-no-repeat bg-cover bg-center
+      bg-[url('./pic1.jpg')] h-[500px] w-[450px] m-5 mt-[10%]">
+
+        <div class="flex justify-around">
+          <h3 class=" text-3xl text-white font-bold">Jessica Point</h3>
+          <p class="text-xl text-white">CEO</p>
+        </div>
+
+        <div class="flex justify-center pt-36">
+          <button class="h-32 w-32 rounded-full text-lg bg-white hover:bg-transparent hover:text-white">VIEW</button>
+        </div>
+
+        <div class="py-36 px-32 text-2xl">
+          <i class="fa-brands fa-square-instagram bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2 "></i>
+          <i class="fa-brands fa-facebook bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-linkedin bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-youtube bg-white text-black rounded-full h-[38px] w-[37px] p-[8px] pl-[3.5px]"></i>
+        </div>
+      </div>
+    </div>
+    <div class="border-l-2 border-r-2">
+      <div class=" bg-no-repeat bg-cover bg-center
+      bg-[url('./pic2.jpg')] h-[500px] w-[450px] m-5 mt-[45%]">
+
+        <div class="flex justify-around">
+          <h3 class=" text-3xl text-white font-bold">Jessica Point</h3>
+          <p class="text-xl text-white">CEO</p>
+        </div>
+
+        <div class="flex justify-center pt-36">
+          <button class="h-32 w-32 rounded-full text-lg bg-white hover:bg-transparent hover:text-white">VIEW</button>
+        </div>
+
+        <div class="py-36 px-32 text-2xl">
+          <i class="fa-brands fa-square-instagram bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2 "></i>
+          <i class="fa-brands fa-facebook bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-linkedin bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-youtube bg-white text-black rounded-full h-[38px] w-[37px] p-[8px] pl-[3.5px]"></i>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        class=" h-10 w-72 border rounded-3xl ml-16 text-white bg-black hover:bg-transparent hover:text-black">LEARN
+        ABOUT
+        NSIDE</button>
+      <div class=" bg-no-repeat bg-cover bg-center
+      bg-[url('./pic3.jpg')] h-[500px] w-[450px] m-5 mt-[65%]">
+
+        <div class="flex justify-around">
+          <h3 class=" text-3xl text-white font-bold">Jessica Point</h3>
+          <p class="text-xl text-white">CMO</p>
+        </div>
+
+        <div class="flex justify-center pt-36">
+          <button class="h-32 w-32 rounded-full text-lg bg-white hover:bg-transparent hover:text-white">VIEW</button>
+        </div>
+        <div class="py-36 px-32 text-2xl">
+          <i class="fa-brands fa-square-instagram bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2 "></i>
+          <i class="fa-brands fa-facebook bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-linkedin bg-white text-black rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i>
+          <i class="fa-brands fa-youtube bg-white text-black rounded-full h-[38px] w-[37px] p-[8px] pl-[3.5px]"></i>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="flex flex-wrap w-[100%]  bg-no-repeat bg-cover bg-center
+  bg-[url('./home.jpg')]">
+    <div class="w-[33%] h-[60vh] pl-8 pt-3 font-sans  bg-slate-200">
+      <p class="text-xl ">Newsletter</p>
+      <h1 class="text-4xl p-6">Everything interior design in your inbox.</h1>
+      <div class="p-4">
+        <p class="p-4 border-b-[2px]  border-b-gray-300">
+          <i class="fa-solid fa-check"></i>
+          <span class="pl-8 text-xl py-4">Odio error vel autem et ut earum</span>
+        </p>
+        <p class="p-4 border-b-[2px]  border-b-gray-300">
+          <i class="fa-solid fa-check"></i>
+          <span class="pl-8 text-xl py-4">Odio error vel autem et ut earum</span>
+        </p>
+        <p class="p-4 border-b-[2px]  border-b-gray-300">
+          <i class="fa-solid fa-check"></i>
+          <span class="pl-8 text-xl py-4">Odio error vel autem et ut earum</span>
+        </p>
+
+      </div>
+    </div>
+
+    <div class="bg-black bg-opacity-50 w-[65%] p-5 h-[60vh] flex flex-wrap">
+      <div class="w-[52.5%]  h-[100%] grid pl-5 pt-8 border-l-2">
+
+        <p class="text-xl text-white">Frequency</p>
+        <span class="text-2xl text-white"> weakly <input type="radio" class="border-none h-5"></span>
+        <span class="text-2xl text-white"> Bi-weakly <input type="radio" class="border-none h-5"></span>
+        <span class="text-2xl text-white"> monthly <input type="radio" class="border-none h-5"></span>
+      </div>
+      <div class="w-[35%] h-[100%] py-5 p-4 pt-10 border-l-2">
+
+        <label class="text-2xl text-white mb-5 p-8">Name:</label>
+        <span class=" flex gap-2">
+          <input type="text" class="h-12 text-lg rounded-sm p-4 w-52" placeholder="Name...">
+          <input type="password" class="h-12 p-4 text-lg  rounded-sm w-52" placeholder="Password...">
+        </span>
+        <label class="text-2xl text-white mb-5 mt-5 p-8">Gmail Address</label>
+        <input type="text" placeholder="Gmail..." class="h-12 rounded-sm text-lg  p-4 w-[425px]">
+        <button class="bg-white h-12 w-44 rounded-3xl float-right  my-3 text-black">SUBSCRIBE</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex gap-4 w-[100%] h-[60vh] p-10 ">
+
+    <div class="grid w-[30%] ">
+      <p class="text-2xl font-semibold">Popular categories</p>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Furniture</button>
+        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Remote Spaces</button>
+        <span class="pl-36">
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </div>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Office Tech</button>
+        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Floor Plans</button>
+        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Organization</button>
+        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class=" flex justify-around  border-b-[1px] border-b-gray-400">
+        <button class="text-xl ">Interior Design</button>
+        <span class="pl-40"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </div>
+
+    <div class="w-[60%] pl-4">
+
+      <marquee direction="up" behavior="scroll" scrollamount="2">
+        <div class=" w-[100%] flex justify-around gap-4 h-[50vh] ">
+
+          <div class="grid ">
+            <div class=" bg-no-repeat bg-cover bg-center
+            bg-[url('./Furniture5.jpg')] h-96 w-[100%] grid justify-start">
+              <div class="bg-black bg-opacity-50 grid">
+                <button class="rotate-90 ">Next</button>
+                <button class="rotate-90 ">priveous</button>
+              </div>
+            </div>
+            <div class="font-bold text-3xl w-[70%]">
+              <h1>Name</h1>
+            </div>
+            <div class="text-xl border-l-2 p-5">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nulla laborum fugiat laudantium! Nisi
+                eveniet
+                facere aperiam. Nihil minima praesentium totam non soluta. Laboriosam, tempore quibusdam nesciunt rem
+                eaque
+                itaque?</p>
+            </div>
+          </div>
+          <div class="grid ">
+            <div class=" bg-no-repeat bg-cover bg-center
+            bg-[url('./Furniture5.jpg')] h-96 w-[100%] grid justify-start">
+              <div class="bg-black bg-opacity-50 grid">
+                <button class="rotate-90 ">Next</button>
+                <button class="rotate-90 ">priveous</button>
+              </div>
+            </div>
+            <div class="font-bold text-3xl w-[70%]">
+              <h1>Name</h1>
+            </div>
+            <div class="text-xl border-l-2 p-5">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nulla laborum fugiat laudantium! Nisi
+                eveniet
+                facere aperiam. Nihil minima praesentium totam non soluta. Laboriosam, tempore quibusdam nesciunt rem
+                eaque
+                itaque?</p>
+            </div>
+          </div>
+
+        </div>
+      </marquee>
+    </div>
+  </section>
+
+  <section>
+    <footer id="footer" class="w-[100%] md:h-[90vh] h-[100%] grid bg-gray-900 md:flex md:bg-gray-900 text-white">
+      <div class="md:w-[45%] p-5 md:p-10 md:border-r-[1px] md:border-b-gray-300">
+
+        <h1 class="text-5xl pt-36 pb-5 font-bold">NSIDE.</h1>
+        <p class="text-xl py-5">About us</p>
+        <p>
+          Mauris accumsan urna eu pharetra elementum. Suspendisse potenti.Vestibulum ut quam luctus, pharetra dui sed,
+          rutrum felis. Vestibulum tellus ipsum, rhoncus sed suscipit a, eleifend in. Vestibulum ut quam luctus,
+          pharetra
+          dui sed, rutrum felis
+        </p>
+
+      </div>
+
+      <div class="md:w-[45%] p-5 md:p-10">
+
+        <h2 class="text-2xl font-thin py-5 md:py-60 md:pb-5">Navigation</h2>
+
+        <p class="border-b-[1px] md:border-b-[1px] border-b-gray-400 text-xl font-mono p-3">Team</p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3">Projects</p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3">Services</p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3">News</p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3">Contact</p>
+
+      </div>
+
+      <div class="md:w-[45%] p-5 md:p-10 border-l-[1px] border-b-gray-400">
+
+        <h2 class="text-2xl font-thin py-5 md:py-60 md:pb-5">Follow us</h2>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3"><i
+            class="fa-brands fa-square-instagram  text-white rounded-full h-[40px] w-[37px] p-[8px] pl-2 "></i>
+          @nside</p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3"><i
+            class="fa-brands fa-facebook  text-white rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i> @nside
+        </p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3"> <i
+            class="fa-brands fa-linkedin  text-white rounded-full h-[40px] w-[37px] p-[8px] pl-2"></i> @nside
+        </p>
+        <p class="border-b-[1px] border-b-gray-400 text-xl font-mono p-3">
+          <i class="fa-brands fa-youtube  text-white rounded-full h-[38px] w-[37px] p-[8px] pl-[3.5px]"></i>
+          @nside
+        </p>
+
+
+
+
+
+      </div>
+    </footer>
+  </section>
+
+  <script src="Furniture.js"></script>
+</body>
+
+</html>
