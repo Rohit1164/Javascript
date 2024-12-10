@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="output.css">
+
+</head>
+
+<body class="bg-blue-950">
+  <div class="h-full w-[450px] ml-[35%] p-8 mt-[10%]  rounded-lg shadow-white shadow-2xl">
+    <p class="text-5xl text-white font-bold text-center" id="weather">
+      Weather App
+    </p>
+    <div class="grid gap-4 m-10">
+      <input id="inputCity" class="text-xl h-14 w-80 p-4 rounded-md" type="text">
+      <button id="showResult" class="bg-blue-800  text-white text-xl h-14 w-80 rounded-md">Search city</button>
+    </div>
+    <div class="hidden" id="showResult-Container">
+      <p class="text-xl text-white" id="cityName"></p>
+      <p class="text-xl text-white" id="tamprature"></p>
+      <p class="text-xl text-white" id="description"></p>
+      <p class="hidden" id="errorMassage">Please give Right City name</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
