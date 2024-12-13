@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notepad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .input-box {
+      width: 100%;
+      padding: 20px;
+      outline: none;
+      color: #333;
+      font-size: x-large;
+      max-width: 450px;
+      min-height: 150px;
+      margin: 20px 30px;
+      position: relative;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .img {
+      width: 60px;
+      height: 60px;
+      color: #fff;
+      float: right;
+      cursor: pointer;
+      margin-top: 90%;
+    }
+  </style>
+</head>
+
+<body class="bg-cyan-950">
+  <h1 class=" flex justify-center"><img class="h-20" src="./assets/notes.png" alt="">
+    <p class="text-4xl mt-5 text-white font-semibold ml-0">Notes</p>
+  </h1>
+  <hr>
+  <button class="flex h-12 w-48 m-10 border-2 pl-4 pr-4 pt-2 pb-2 border-none bg-blue-700 rounded-3xl"
+    id="notesAddBtn"><img class="h-7 pt-2 " src="./assets/write.png" alt="Delete button">
+    <p class="text-xl pl-4 font-thin text-white">create note</p>
+  </button>
+  <div class="grid grid-cols-3 justify-center" id="notepad-container">
+
+  </div>
+  <script>
+    const div = document.querySelector('#notepad-container')
+    const createbtn = document.querySelector('#notesAddBtn')
+    let notes = document.querySelectorAll(".input-box")
+
+
+    function shownotes() {
+      const storedNotes = localStorage.getItem('notes');
+      if (storedNotes) {
+        div.innerHTML = storedNotes;
+      } else {
+        div.innerHTML = '';
+      }
+    }
+    shownotes()
+    function updateStorage() {
+      localStorage.setItem('notes', div.innerHTML)
+    }
+    createbtn.addEventListener('click', () => {
+      let inputBox = document.createElement('p')
+      let img = document.createElement('img')
+      inputBox.className = "input-box"
+      inputBox.setAttribute("contenteditable", "true")
+      img.className = 'img'
+      img.src = './assets/delete.png'
+      div.appendChild(inputBox).appendChild(img)
+      updateStorage()
+    })
+    div.addEventListener("click", function (e) {
+      if (e.target.tagName === 'IMG') {
+        e.target.parentElement.remove()
+        updateStorage()
+      }
+      else if (e.target.tagName === 'P') {
+        notes = document.querySelectorAll(".input-box")
+        notes.forEach(note => {
+          note.onkeyup = function () {
+            updateStorage();
+          };
+        });
+      }
+    })
+
+  </script>
+</body>
+
+</html>
