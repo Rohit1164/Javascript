@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple E-Commerce</title>
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+  <style>
+    body {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: black;
+    }
+
+    .heading-top {
+      text-align: center;
+    }
+
+    .container {
+      width: 300px;
+      height: 100%;
+      padding: 30px;
+      margin-top: 10%;
+      margin-left: 40%;
+      border-radius: 20px;
+      background-color: rgb(65, 64, 64);
+    }
+
+    #product-list {
+      display: grid;
+      font-size: larger;
+    }
+
+    button {
+      width: 100px;
+      height: 35px;
+      margin: 10px;
+      border: none;
+      color: white;
+      outline: none;
+      border-radius: 10px;
+      background-color: blue;
+    }
+
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="heading-top">Products</h1>
+    <hr>
+    <div id="product-list">
+    </div>
+
+    <h2>Shopping Cart</h2>
+    <div id="cart-items">
+      <p id="empty-cart">Your cart is empty.</p>
+    </div>
+    <div id="cart-total" class="hidden">
+      <p>Total: <span id="total-price">$0.00</span></p>
+      <button id="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      let products =
+        [
+          { id: 1, item: 'product 1', price: 12.00 },
+          { id: 2, item: 'product 2', price: 12.12 },
+          { id: 3, item: 'product 3', price: 89.00 }
+        ]
+
+      const cart = []
+      const productList = document.querySelector("#product-list")
+      const cartItems = document.querySelector("#cart-items")
+      const emptyCart = document.querySelector("#empty-cart")
+      const cartTotal = document.querySelector("#cart-total")
+      const totalPriceMassage = document.querySelector("#total-price")
+      const checkoutBtn = document.querySelector("#checkout-btn")
+
+      products.forEach((product) => {
+        const productdiv = document.createElement('div')
+        productdiv.className = 'product'
+        productdiv.innerHTML =
+          `
+  <span>${product.item} - $${product.price.toFixed(2)}</span>
+  <button data-id="${product.id}">Add to cart</button>
+  `
+        productList.appendChild(productdiv)
+      })
+
+      productList.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+          const productid = parseInt(e.target.getAttribute('data-id'))
+          const product = products.find((p) => p.id === productid)
+          console.log(product)
+          Addtocart(product)
+
+        }
+      })
+
+      function Addtocart(product) {
+        console.log(cart.push(product))
+        console.log(cart)
+        ShowCart()
+      }
+
+      function ShowCart() {
+        cartItems.textContent = ''
+        let totalPrice = 0
+        if (cart.length > 0) {
+          emptyCart.classList.add('hidden')
+          cartTotal.classList.remove("hidden")
+          cart.forEach((item, index) => {
+            totalPrice += item.price;
+            const cartItem = document.createElement("div")
+            cartItem.innerHTML = `${item.item} - $${item.price.toFixed(2)}`
+            cartItems.appendChild(cartItem)
+            totalPriceMassage.textContent = `${totalPrice.toFixed(2)}`
+          })
+        }
+        else {
+          emptyCart.classList.remove("hidden")
+        }
+
+        checkoutBtn.addEventListener('click', () => {
+          cart.length = 0
+          alert('Checkout Successfully')
+          ShowCart()
+          totalPriceMassage.textContent = '$0.00'
+        })
+
+      }
+    })
+  </script>
+</body>
+
+</html>
