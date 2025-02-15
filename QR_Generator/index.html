@@ -1,0 +1,74 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-900">
+  <div class="bg-white h-full w-[450px] rounded-md m-auto mt-40 p-10">
+    <h1 class="text-center text-3xl font-bold underline">QR Code Generator!</h1>
+    <input type="text" class="h-14 text-xl w-full border-1 border-b-gray-900 rounded-md mt-3 px-3"
+      placeholder=" Text Or URL">
+    <div class="ml-24 p-4" id="ImgContainer">
+      <img src="" alt="" class="">
+    </div>
+    <button class="bg-gray-900 text-white px-3 w-full h-14 rounded-md text-xl">QR code Generate</button>
+  </div>
+  <script>
+
+    const userInput = document.querySelector(" input");
+    const img = document.querySelector("img")
+    const ImgContainer = document.querySelector("ImgContainer")
+
+    document.querySelector("button").addEventListener("click", () => {
+      if (userInput.value === "") {
+        const empy = document.querySelector("h2")
+        empy.innerHTML = "Please Enter URL"
+        ImgContainer.appendChild(empy)
+      } else {
+        img.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + userInput.value
+        img.alt = userInput.value
+      }
+      console.log("first")
+    })
+  </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-900 font-mono">
+  <div class="bg-white w-[450px] rounded-md m-auto mt-40 p-10">
+    <h1 class="text-center text-3xl font-bold underline">QR Code Generator!</h1>
+
+    <input type="text" id="userInput" class="h-14 text-xl w-full border border-gray-900 rounded-md mt-3 px-3"
+      placeholder="Enter Text or URL">
+
+    <div class="ml-24 p-4" id="ImgContainer">
+      <img src="" alt="" id="qrImage" class="">
+    </div>
+
+    <button id="generateBtn" class="bg-gray-900 text-white px-3 w-full h-14 rounded-md text-xl mt-3">Generate QR
+      Code</button>
+
+    <h2 id="errorMsg" class="text-red-500 text-center mt-2 hidden">Please Enter a URL</h2>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
